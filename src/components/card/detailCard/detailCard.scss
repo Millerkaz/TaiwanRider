@@ -1,0 +1,224 @@
+@import "../../../sass/variable.scss";
+
+$color-font-main: #291109;
+
+.detailCard {
+  margin: 20rem 12rem 10rem 12rem;
+
+  padding: 4rem 5rem;
+  background: linear-gradient(180deg, rgba(239, 239, 239, 0) 0%, rgba(206, 206, 206, 0.2) 100%), #ffffff;
+  box-shadow: 8px 48px 35px -13px rgba(0, 0, 0, 0.25), inset -4px -4px 3px -2px rgba(0, 0, 0, 0.25);
+  border-radius: 5rem;
+
+  @media only screen and (max-width: $rwd-medium) {
+    margin-top: 30rem;
+  }
+
+  @media only screen and (max-width: $rwd-small) {
+    margin: 40rem 0 10rem 0;
+  }
+
+  &__background {
+    position: absolute;
+  }
+
+  &__imgShow {
+    margin: 3rem 0;
+    display: flex;
+    justify-content: space-around;
+
+    @media only screen and (max-width: $rwd-large) {
+      flex-flow: column;
+    }
+
+    &--Bar {
+      margin-right: 5rem;
+      flex: 0 1 5%;
+
+      @media only screen and (max-width: $rwd-large) {
+        display: flex;
+        justify-content: center;
+        margin: 0;
+        order: 2;
+      }
+
+      button {
+        margin: 1rem auto 2.98rem auto;
+
+        @media only screen and (max-width: $rwd-large) {
+          margin: 2rem;
+        }
+      }
+    }
+
+    &--List {
+      flex: 1;
+
+      position: relative;
+      border-radius: 4rem;
+      overflow: hidden;
+
+      @media only screen and (max-width: $rwd-small) {
+      }
+    }
+
+    &--each {
+      width: 100%;
+      height: 60rem;
+
+      img {
+        object-fit: cover;
+        object-position: 50% 50%;
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+
+  &__header {
+    &--title {
+      font-weight: 800;
+      font-size: 4rem;
+      line-height: 5.6rem;
+      color: #291109;
+      text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.25);
+    }
+
+    &--class {
+      display: flex;
+      align-items: center;
+
+      span {
+        font-size: 1.5rem;
+        color: #696969;
+        margin: 1.5rem 1rem 4rem 0rem;
+
+        &:first-child {
+          img {
+            margin-right: 1rem;
+          }
+
+          display: flex;
+          align-items: center;
+        }
+
+        &:not(:first-child) {
+          margin-left: 1rem;
+          margin-right: 0.5rem;
+          text-decoration-line: underline;
+          color: #e56f47;
+        }
+      }
+    }
+  }
+
+  &__iconGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 5rem;
+    justify-items: center;
+
+    @media only screen and (max-width: $rwd-medium) {
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr;
+    }
+
+    &--link {
+      @media only screen and (max-width: $rwd-medium) {
+        justify-content: space-between !important;
+      }
+    }
+
+    &--left {
+      display: flex;
+      align-items: center;
+
+      flex-wrap: wrap;
+
+      & > div {
+        margin: 1.5rem 0;
+        flex: 0 1 100%;
+        font-size: 1.5rem;
+        line-height: 2.1rem;
+        display: flex;
+        align-items: center;
+
+        @media only screen and (max-width: $rwd-medium) {
+          justify-content: center;
+        }
+
+        img {
+          width: 3rem;
+          height: 3rem;
+          margin-right: 1rem;
+        }
+      }
+
+      & > a {
+        margin: 1.5rem 0;
+      }
+    }
+    &--openTime {
+    }
+
+    &--ticketInfo {
+    }
+
+    &--address {
+    }
+
+    &--phone {
+    }
+
+    &--link {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &--map {
+      width: 60rem;
+      height: 40rem;
+      border-radius: 4rem;
+      overflow: hidden;
+      align-self: center;
+
+      a {
+        z-index: 2;
+      }
+
+      @media only screen and (max-width: $rwd-largest) {
+        width: 50rem;
+      }
+
+      @media only screen and (max-width: $rwd-large) {
+        margin: 5rem 0;
+        width: 100%;
+      }
+    }
+  }
+
+  &__description {
+    margin-top: 4rem;
+
+    p {
+      font-weight: 300;
+      font-size: 1.6rem;
+      line-height: 3rem;
+    }
+  }
+
+  &__near {
+    h2 {
+      color: $color-font-main;
+      font-size: 3.4rem;
+      font-weight: 400;
+    }
+
+    &--header {
+      width: 85%;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+}

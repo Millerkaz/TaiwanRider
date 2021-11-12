@@ -1,0 +1,39 @@
+$rwd-largest: 1500px;
+$rwd-large: 1200px;
+$rwd-medium: 900px;
+$rwd-small: 600px;
+$rwd-smallest: 420px;
+
+@keyframes moveToRight {
+  0% {
+    transform: translateX(0%);
+  }
+
+  100% {
+    transform: translateX(2000%);
+  }
+}
+
+@keyframes moveToLeft {
+  0% {
+    transform: translateX(0%);
+  }
+
+  100% {
+    transform: translateX(-2000%);
+  }
+}
+
+@keyframes pulse-down {
+  0% {
+    transform: translateY(0%);
+  }
+
+  50% {
+    transform: translateY(10%);
+  }
+
+  100% {
+    transform: translateY(0%);
+  }
+}

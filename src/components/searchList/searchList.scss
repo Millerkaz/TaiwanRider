@@ -1,0 +1,13 @@
+@import "../../sass/variable.scss";
+.searchList {
+  margin: 5rem auto 7.6rem auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(35.4rem, 1fr));
+  column-gap: 3rem;
+  row-gap: 7.6rem;
+  justify-items: center;
+
+  @media only screen and (max-width: $rwd-small) {
+    grid-template-columns: 1fr;
+  }
+}
