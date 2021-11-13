@@ -8,6 +8,7 @@ import logo from "./logo.png";
 import recommend from "./recommend.png";
 import logo_w from "./logo_w.png";
 
+import search from "./icons/search.svg";
 import i_arrowD from "./icons/arrow_down.png";
 
 const img = {
@@ -21,6 +22,7 @@ const img = {
   recommend,
   i_arrowD,
   logo_w,
+  search,
 };
 
 export default img;

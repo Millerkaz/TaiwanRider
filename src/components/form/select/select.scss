@@ -1,0 +1,18 @@
+.select {
+  &:hover {
+    cursor: pointer;
+  }
+
+  &__mainSearchBar {
+    background: #ffffff;
+    border: 1px solid #dcdee0;
+    box-sizing: border-box;
+    border-radius: 100px;
+    padding: 1.4rem 2rem 1.5rem 2rem;
+
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.6rem;
+    line-height: 2.3rem;
+  }
+}

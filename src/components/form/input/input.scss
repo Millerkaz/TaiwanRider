@@ -1,0 +1,15 @@
+.input {
+  background: #ffffff;
+  border: 1px solid #dcdee0;
+  border-radius: 10rem;
+
+  &__mainSearchBar {
+    // width: 97rem;
+    flex: 0 1 80%;
+    height: 5.2rem;
+    margin: 0 1.2rem;
+    font-size: 1.6rem;
+    line-height: 2.3rem;
+    padding: 1.5rem 2rem;
+  }
+}
