@@ -1,8 +1,6 @@
 @import "../../sass/variable.scss";
 
 .searchBar {
-  margin: 0 auto;
-
   // @media only screen and (max-width: $rwd-medium) {
   //   width: 80rem;
   // }
@@ -12,7 +10,12 @@
   //   height: auto;
   // }
 
+  &__container {
+    display: flex;
+  }
+
   &__form {
+    flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;

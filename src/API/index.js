@@ -10,6 +10,9 @@ function GetAuthorizationHeader() {
   var AppID = process.env.REACT_APP_PTX_ID;
   var AppKey = process.env.REACT_APP_PTX_KEY;
 
+  // var AppID = "FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF";
+  // var AppKey = "FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF";
+
   var GMTString = new Date().toGMTString();
   var ShaObj = new jsSHA("SHA-1", "TEXT");
   ShaObj.setHMACKey(AppKey, "TEXT");

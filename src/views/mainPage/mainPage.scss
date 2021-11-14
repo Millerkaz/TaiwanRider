@@ -31,6 +31,9 @@
       z-index: 10000;
       width: 100%;
       transition: all 0.2s;
+
+      display: flex;
+      flex-wrap: wrap;
     }
 
     &--imgs {
@@ -55,6 +58,7 @@
 
     &--searchBar {
       flex: 0 1 100%;
+      margin-bottom: auto;
     }
   }
 

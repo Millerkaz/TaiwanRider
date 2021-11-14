@@ -48,12 +48,10 @@ const SearchBar = (props) => {
             搜尋
             <img src={img.search} alt="search" />
           </Field>
-
-          {/* <Btn type="submit" color="search">
-            搜尋
-            <img src={img.search} alt="search" />
-          </Btn> */}
         </form>
+        <Btn color="location">
+          <img src={img.search} alt="search" />
+        </Btn>
       </div>
     </div>
   );

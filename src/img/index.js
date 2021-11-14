@@ -8,8 +8,10 @@ import logo from "./logo.png";
 import recommend from "./recommend.png";
 import logo_w from "./logo_w.png";
 
+import i_shopPin from "./icons/off.png";
 import search from "./icons/search.svg";
 import i_arrowD from "./icons/arrow_down.png";
+import i_bike from "./icons/pedal_bike.png";
 
 const img = {
   bike1,
@@ -23,6 +25,8 @@ const img = {
   i_arrowD,
   logo_w,
   search,
+  i_bike,
+  i_shopPin,
 };
 
 export default img;

@@ -1,19 +1,45 @@
+@import "../../sass/variable.scss";
+
 .icon {
   &--myself {
     width: 35px;
     height: 35px;
     padding: 0.1rem;
-    border: 2px solid #00a8c0;
+    border: 2px solid $color__main;
     box-sizing: border-box;
-    filter: drop-shadow(0px 0px 10px #00a8c0);
+    filter: drop-shadow(0px 0px 10px $color__main);
     border-radius: 100px;
     animation-name: iconsPulse;
     animation-iteration-count: infinite;
     animation-duration: 1s;
+  }
+}
 
-    &--actice {
-      animation-name: icons-pulse;
-      animation-iteration-count: infinite;
+.icon--active {
+  filter: drop-shadow(0px 0px 10px $color__main);
+  animation-name: iconsPulse;
+  animation-iteration-count: infinite;
+  animation-duration: 1s;
+}
+
+.pin--restaurant {
+}
+
+.pin--bike {
+  width: auto !important;
+  height: auto !important;
+  background: #ffffff;
+  border: 2px solid #323233;
+  box-sizing: border-box;
+  border-radius: 10rem;
+  overflow: hidden;
+
+  div {
+    width: 100%;
+
+    img {
+      width: 3rem;
+      height: 3rem;
     }
   }
 }

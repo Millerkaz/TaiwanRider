@@ -1,0 +1,16 @@
+.mainPage__main {
+  &--restaurant {
+    position: absolute;
+    top: 18rem;
+    right: 0%;
+    z-index: 10000;
+    transition: all 0.5s;
+    overflow: hidden;
+  }
+
+  &--restaurant-icons {
+    display: flex;
+    align-items: flex-end;
+    flex-flow: column;
+  }
+}

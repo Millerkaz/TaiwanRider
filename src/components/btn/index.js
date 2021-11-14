@@ -29,8 +29,11 @@ const Btn = (props) => {
     default:
       return (
         <button
+          type={props.type}
           onClick={props.onClick}
-          className={`btn btn--${props.color} ${props.className || ""}`}
+          className={`btn ${props.color && `btn--${props.color}`} ${
+            props.className || ""
+          }`}
         >
           {props.children}
         </button>

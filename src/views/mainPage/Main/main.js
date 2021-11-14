@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import img from "../../../img";
 import SearchBar from "../../../components/searchBar/searchBar";
-import LeafletMap from "../../../components/leafletMap/leafletMap";
+import RestaurantBar from "./restaurantBar/restaurantBar";
 
 const Header = (props) => {
   return (
@@ -22,6 +22,7 @@ const Header = (props) => {
         </div>
         <SearchBar className="mainPage__main--searchBar" />
       </div>
+      <RestaurantBar className={`mainPage__main--restaurant `} />
     </React.Fragment>
   );
 };
