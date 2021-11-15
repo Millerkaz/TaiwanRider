@@ -22,7 +22,7 @@ const Header = (props) => {
         </div>
         <SearchBar className="mainPage__main--searchBar" />
       </div>
-      <RestaurantBar className={`mainPage__main--restaurant `} />
+      <RestaurantBar className={`mainPage__main--restaurant`} />
     </React.Fragment>
   );
 };

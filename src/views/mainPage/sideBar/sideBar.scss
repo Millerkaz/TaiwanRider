@@ -1,4 +1,22 @@
-.sideBar {
-  width: 10rem;
+.mainPage__sideBar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 25%;
+  overflow-y: auto;
+
+  transition: all 0.2s;
+  z-index: 10000;
   height: 100vh;
+  background: #f7f8fa;
+  box-shadow: 15px 0px 8px rgba(0, 0, 0, 0.1);
+
+  &-header {
+  }
+
+  &-list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
 }

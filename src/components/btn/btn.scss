@@ -56,14 +56,34 @@
 }
 
 .btn--location {
+  width: 5rem;
+  height: 5rem;
+  background: #ffffff;
+  box-shadow: 0px 4px 10px rgba(50, 50, 51, 0.25);
+  border-radius: 100px;
   margin-right: 1rem;
-  border-radius: 40rem;
+  transition: all 0.2s;
+
+  img {
+    width: 2.567rem;
+    height: 2.567rem;
+  }
+
+  &:hover {
+    background-color: #ffffff;
+    transform: scale(1.1);
+  }
+
+  &:active {
+    background-color: #ffffff;
+    transform: scale(1.1) translateY(5%);
+    box-shadow: 0px 1px 5px rgba(50, 50, 51, 0.25);
+  }
 }
 
 .btn--detailCard {
-  padding: 1.5rem;
-  width: 21.6rem;
-  font-size: 1.8rem;
+  margin-top: 1rem;
+  border-radius: 10rem;
 }
 
 .btn--pageBar {

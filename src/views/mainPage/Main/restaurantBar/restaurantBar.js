@@ -1,37 +1,60 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import ListSmallCard from "../../../../components/card/listSmallCard/listSmallCard";
-import PageBtnBar from "../../../../components/pageBtnBar/pageBtnBar";
+import BtnBar from "../../../../components/btnBar/btnBar";
+import { Virtual } from "swiper";
+import { Swiper, SwiperSlide } from "swiper/react/swiper-react.js";
 
 import "./restaurantBar.scss";
 
 const renderRestaurantCard = (data) => {
   return data.map((shop) => (
-    <ListSmallCard
-      key={shop.ID}
-      title={shop.Name}
-      id={shop.ID}
-      phone={shop.Phone.split(",")[0]}
-      open={shop.OpenTime}
-      address={shop.Address}
-      coords={{
-        lat: shop.Position.PositionLat,
-        lng: shop.Position.PositionLon,
-      }}
-    />
+    <SwiperSlide>
+      <ListSmallCard
+        key={shop.ID}
+        title={shop.Name}
+        id={shop.ID}
+        phone={shop.Phone.split(",")[0]}
+        open={shop.OpenTime}
+        address={shop.Address}
+        coords={{
+          lat: shop.Position.PositionLat,
+          lng: shop.Position.PositionLon,
+        }}
+      />
+    </SwiperSlide>
   ));
 };
 
 const RestaurantBar = (props) => {
+  const [closeClick, setCloseClick] = useState(false);
   const restaurant = useSelector((state) => state.nearRestaurantData);
 
   if (!restaurant) return <></>;
 
   return (
-    <div className={props.className || null}>
-      <PageBtnBar className="mainPage__main--restaurant-icons " />
-      {renderRestaurantCard(restaurant)}
-    </div>
+    <>
+      <BtnBar
+        className="mainPage__main--restaurant-icons "
+        onCloseClick={() => setCloseClick((pre) => !pre)}
+      />
+      <div className={props.className || null}>
+        <div
+          className={`mainPage__main--restaurant-list ${
+            closeClick ? "restaurant--hidden " : ""
+          }`}
+        >
+          <Swiper
+            direction={`vertical`}
+            height={100}
+            slidesPerView={1}
+            spaceBetween={12}
+          >
+            {renderRestaurantCard(restaurant)}
+          </Swiper>
+        </div>
+      </div>
+    </>
   );
 };
 

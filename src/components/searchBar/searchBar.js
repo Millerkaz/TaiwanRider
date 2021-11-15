@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { reduxForm, Field } from "redux-form";
 import history from "../../helper/history";
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { action } from "../../store";
+import { map, myselfPosition } from "../leafletMap/leafletMap";
 
 import Input from "../form/input/input";
 import Select from "../form/select/select";
@@ -14,10 +15,10 @@ import img from "../../img";
 import "./searchBar.scss";
 
 const SearchBar = (props) => {
-  const [term, setTerm] = useState("");
-  const [type, setType] = useState("spot");
-  const [city, setCity] = useState("all");
+  const nearRestaurantData = useSelector((state) => state.nearRestaurantData);
+  const nearBikeData = useSelector((state) => state.nearBikeData);
   const dispatch = useDispatch();
+  const mapCenter = useRef(1);
 
   const formSubmitHandler = (valueObj) => {
     dispatch(action.fetchBikeDataCreator(valueObj));
@@ -28,8 +29,8 @@ const SearchBar = (props) => {
       <div className="searchBar__container">
         <form
           className="searchBar__form"
-          onSubmit={props.handleSubmit((e) => {
-            formSubmitHandler(e, type);
+          onSubmit={props.handleSubmit((valueObj) => {
+            formSubmitHandler(valueObj);
           })}
         >
           <Field
@@ -49,8 +50,21 @@ const SearchBar = (props) => {
             <img src={img.search} alt="search" />
           </Field>
         </form>
-        <Btn color="location">
-          <img src={img.search} alt="search" />
+        <Btn
+          color="location"
+          onClick={() => {
+            if (!myselfPosition) {
+              dispatch({
+                type: "FETCH_NO_BIKE_DATA",
+                payload: { mes: "no gps" },
+              });
+              return;
+            }
+            dispatch(action.fetchNearBikeDataCreator(myselfPosition));
+            map.setView(myselfPosition, 16);
+          }}
+        >
+          <img src={img.i_gps} alt="search" />
         </Btn>
       </div>
     </div>

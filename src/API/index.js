@@ -9,7 +9,7 @@ export const PTX = axios.create({
 function GetAuthorizationHeader() {
   var AppID = process.env.REACT_APP_PTX_ID;
   var AppKey = process.env.REACT_APP_PTX_KEY;
-
+  //
   // var AppID = "FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF";
   // var AppKey = "FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF";
 

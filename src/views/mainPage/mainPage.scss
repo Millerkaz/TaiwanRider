@@ -4,18 +4,6 @@
   position: relative;
 
   &__sideBar {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 25%;
-
-    // display: flex;
-    // flex: 100%;
-    transition: all 0.2s;
-    z-index: 10000;
-    height: 100vh;
-    background: #f7f8fa;
-    box-shadow: 15px 0px 8px rgba(0, 0, 0, 0.1);
   }
 
   &__main {
@@ -81,6 +69,7 @@
     }
 
     div :first-child {
+      text-align: center;
       font-family: "Montserrat", sans-serif;
       font-size: 20rem;
       margin-bottom: 5rem;

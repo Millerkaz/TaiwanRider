@@ -23,7 +23,7 @@ const MainPage = (props) => {
           isRecommendClick ? "" : "sideBar--hidden"
         }`}
       >
-        <SideBar isRecommendClick={isRecommendClick} className="" />
+        <SideBar />
       </div>
       <Main
         isRecommendClick={isRecommendClick}
@@ -31,14 +31,20 @@ const MainPage = (props) => {
         className="mainPage__main"
       />
       <div
-        className={`mainPage__error ${!isErrorShow ? "error--hidden" : ""}`}
+        className={`mainPage__error ${
+          !isErrorShow.showError ? "error--hidden" : ""
+        }`}
         onClick={() => {
           dispatch(action.closeErrorScreenCreator());
         }}
       >
         <div>
           <p>{`(^-^*)`}</p>
-          <p>找無站點</p>
+          <p>
+            {isErrorShow.mes === "no data"
+              ? "找無站點"
+              : "定位功能需要先開啟定位唷！"}
+          </p>
         </div>
       </div>
     </div>

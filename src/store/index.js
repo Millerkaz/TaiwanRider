@@ -8,8 +8,8 @@ const FETCH_BIKE_DATA = "FETCH_BIKE_DATA";
 const FETCH_NO_BIKE_DATA = "FETCH_NO_BIKE_DATA";
 
 const FETCH_NEAR_BIKE_DATA = "FETCH_NEAR_BIKE_DATA";
-const FETCH_NO_NEAR_BIKE_DATA = "FETCH_NO_NEAR_BIKE_DATA";
-const FETCH_RESTAURANT_DATA = "FETCH_RESTAURANT_DATA";
+const FETCH_NEAR_RESTAURANT_DATA = "FETCH_NEAR_RESTAURANT_DATA";
+const CLEAR_NEAR_DATA = "CLEAR_NEAR_DATA";
 
 const SELECT_RESTAURANT = "SELECT_RESTAURANT";
 
@@ -32,6 +32,7 @@ export const action = {
       if (bikeData.data.length === 0) {
         dispatch({
           type: FETCH_NO_BIKE_DATA,
+          payload: { mes: "no data" },
         });
         return;
       }
@@ -44,26 +45,25 @@ export const action = {
 
       const bikeAvailableData = await Promise.all(UIDPromiseArray);
 
+      // dispatch(action.clearNearDataCreator());
+
       dispatch({
         type: FETCH_BIKE_DATA,
         payload: {
           bikeData: bikeData.data,
-          bikeAvailableData: bikeAvailableData.map((v) => v.data),
+          bikeAvailableData: bikeAvailableData.map((data) => data.data[0]),
         },
       });
     };
   },
 
   fetchNearBikeDataCreator: ({ lat, lng }) => {
-    return async (dispatch) => {
+    return async (dispatch, getState) => {
       const bikeData = await PTX.get(
         `/v2/Bike/Station/NearBy?$top=100&$spatialFilter=nearby(${lat}%2C${lng}%2C1000)&$format=JSON`
       );
 
       if (bikeData.data.length === 0) {
-        dispatch({
-          type: FETCH_NO_NEAR_BIKE_DATA,
-        });
         return;
       }
 
@@ -81,17 +81,17 @@ export const action = {
     };
   },
 
-  fetchRestaurantDataCreator: (coords) => {
+  fetchRestaurantDataCreator: (coords, meters = 500) => {
     return async (dispatch) => {
       if (!coords) return;
-      const filterString = `$spatialFilter=nearby(${coords.lat}%2C${coords.lng}%2C1000)&$`;
+      const filterString = `$spatialFilter=nearby(${coords.lat}%2C${coords.lng}%2C${meters})&$`;
 
       const restaurantPromise = await PTX.get(
         `/v2/Tourism/Restaurant?$top=100&${filterString}format=JSON`
       );
 
       dispatch({
-        type: FETCH_RESTAURANT_DATA,
+        type: FETCH_NEAR_RESTAURANT_DATA,
         payload: restaurantPromise.data,
       });
     };
@@ -104,38 +104,51 @@ export const action = {
   closeErrorScreenCreator: () => {
     return { type: CLOSE_ERROR_SCREEN };
   },
+
+  clearNearDataCreator: () => {
+    return { type: CLEAR_NEAR_DATA };
+  },
 };
 
 //*---------------- Reducer ---------------- *//
 
 const oneBikeDataReducer = (preState = {}, action) => {
   if (action.type === FETCH_BIKE_DATA) {
-    return { ...preState, ...action.payload };
+    return { ...action.payload };
   }
   return preState;
 };
 
 const nearBikeDataReducer = (preState = {}, action) => {
   if (action.type === FETCH_NEAR_BIKE_DATA) {
-    return { ...preState, ...action.payload };
+    return { ...action.payload };
   }
-  return preState;
-};
 
-const isErrorShowReducer = (preState = false, action) => {
-  if (action.type === FETCH_NO_BIKE_DATA) {
-    return true;
-  }
-  if (action.type === CLOSE_ERROR_SCREEN) {
-    return false;
+  if (action.type === CLEAR_NEAR_DATA) {
+    return null;
   }
 
   return preState;
 };
 
 const fetchRestaurantDataReducer = (preState = null, action) => {
-  if (action.type === FETCH_RESTAURANT_DATA) {
+  if (action.type === FETCH_NEAR_RESTAURANT_DATA) {
     return [...action.payload];
+  }
+
+  if (action.type === CLEAR_NEAR_DATA) {
+    return null;
+  }
+
+  return preState;
+};
+
+const isErrorShowReducer = (preState = false, action) => {
+  if (action.type === FETCH_NO_BIKE_DATA) {
+    return { showError: true, ...action.payload };
+  }
+  if (action.type === CLOSE_ERROR_SCREEN) {
+    return { showError: false, mes: "" };
   }
 
   return preState;

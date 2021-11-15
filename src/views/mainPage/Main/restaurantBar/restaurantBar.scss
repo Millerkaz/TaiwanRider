@@ -1,7 +1,7 @@
 .mainPage__main {
   &--restaurant {
     position: absolute;
-    top: 18rem;
+    top: 25rem;
     right: 0%;
     z-index: 10000;
     transition: all 0.5s;
@@ -9,8 +9,20 @@
   }
 
   &--restaurant-icons {
+    position: absolute;
     display: flex;
-    align-items: flex-end;
-    flex-flow: column;
+    z-index: 10000;
+    top: 18rem;
+    right: 0%;
   }
+
+  &--restaurant-list {
+    transition: all 0.5s;
+    height: 100rem;
+    user-select: none;
+  }
+}
+
+.restaurant--hidden {
+  height: 0rem;
 }
