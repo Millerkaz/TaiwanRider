@@ -7,13 +7,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { action } from "../../store";
 import Input from "../form/input/input";
 import Select from "../form/select/select";
-import Btn from "../../components/btn";
+import Btn from "../btn";
 
 import img from "../../img";
 
-import "./searchBar.scss";
+import "./mobileSearch.scss";
 
-const SearchBar = (props) => {
+const MobileSearchBar = (props) => {
   const nearRestaurantData = useSelector((state) => state.nearRestaurantData);
   const nearBikeData = useSelector((state) => state.nearBikeData);
   const dispatch = useDispatch();
@@ -67,7 +67,7 @@ const validate = (formValues) => {
 };
 
 export default reduxForm({
-  form: "searchBar",
+  form: "mobileSearchBar",
   initialValues: { city: "Taichung" },
   validate: validate,
-})(SearchBar);
+})(MobileSearchBar);

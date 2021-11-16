@@ -6,6 +6,7 @@ import LeafletMap from "./components/leafletMap/leafletMap";
 import IndexPage from "./views/indexPage/indexPage";
 import SideBar from "./views/mainPage/sideBar/sideBar";
 import MainPage from "./views/mainPage/mainPage";
+import MobileToolBar from "./components/mobileToolBar/mobileToolBar";
 
 import "./sass/index.scss";
 
