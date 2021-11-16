@@ -12,6 +12,7 @@ const FETCH_NEAR_RESTAURANT_DATA = "FETCH_NEAR_RESTAURANT_DATA";
 const CLEAR_NEAR_DATA = "CLEAR_NEAR_DATA";
 
 const SELECT_RESTAURANT = "SELECT_RESTAURANT";
+const SELECT_ROAD = "SELECT_ROAD";
 
 const CLOSE_ERROR_SCREEN = "CLOSE_ERROR_SCREEN";
 
@@ -101,6 +102,10 @@ export const action = {
     return { type: SELECT_RESTAURANT, payload: id };
   },
 
+  selectRoadCreator: (geoJson, props) => {
+    return { type: SELECT_ROAD, payload: { ...props, Geometry: geoJson } };
+  },
+
   closeErrorScreenCreator: () => {
     return { type: CLOSE_ERROR_SCREEN };
   },
@@ -162,11 +167,20 @@ const selectRestaurantReducer = (preState = null, action) => {
   return preState;
 };
 
+const selectRoadReducer = (preState = null, action) => {
+  if (action.type === SELECT_ROAD) {
+    return { ...action.payload };
+  }
+
+  return preState;
+};
+
 export const reducers = combineReducers({
   bikeData: oneBikeDataReducer,
   nearBikeData: nearBikeDataReducer,
   nearRestaurantData: fetchRestaurantDataReducer,
   selectRestaurant: selectRestaurantReducer,
+  selectRoad: selectRoadReducer,
   isErrorShow: isErrorShowReducer,
   form: formReducer,
 });

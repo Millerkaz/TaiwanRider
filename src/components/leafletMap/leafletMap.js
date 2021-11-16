@@ -145,7 +145,7 @@ const mergeBikeData = (bikeDataFromState) => {
 /////////////////////////////////////////////////////////////////////////////////////////
 
 const LeafletMap = (props) => {
-  const selectRestaurant = useSelector((state) => state.selectRestaurant);
+  const selectRoad = useSelector((state) => state.selectRoad);
   const bikeData = useSelector((state) => state.bikeData);
   const nearRestaurantData = useSelector((state) => state.nearRestaurantData);
   const nearBikeData = useSelector((state) => state.nearBikeData);
@@ -154,6 +154,7 @@ const LeafletMap = (props) => {
   const nearBikeMarksGroup = useRef(null);
   const nearShopsGroup = useRef(null);
   const searchBikeMarksGroup = useRef(null);
+  const road = useRef(null);
 
   useEffect(() => {
     mapBuild(dispatch);
@@ -329,6 +330,20 @@ const LeafletMap = (props) => {
       map.addLayer(searchBikeMarksGroup.current);
     }
   }, [bikeData]);
+
+  useEffect(() => {
+    if (!selectRoad) {
+      return;
+    }
+
+    if (road.current) {
+      map.removeLayer(road.current);
+    }
+
+    road.current = window.L.geoJson().addTo(map);
+    road.current.addData(selectRoad.Geometry);
+    map.flyToBounds(road.current.getBounds());
+  }, [selectRoad]);
 
   return <div id="map" class="map"></div>;
 };

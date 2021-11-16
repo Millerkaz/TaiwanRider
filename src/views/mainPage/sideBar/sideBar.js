@@ -10,11 +10,6 @@ const SideBar = (props) => {
       <div className="mainPage__sideBar-header">header</div>
       <div className="mainPage__sideBar-list">
         <SideBarListCard />
-        <SideBarListCard />
-        <SideBarListCard />
-        <SideBarListCard />
-        <SideBarListCard />
-        <SideBarListCard />
       </div>
     </React.Fragment>
   );

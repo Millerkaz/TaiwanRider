@@ -1,10 +1,13 @@
 import React from "react";
+import Wkt from "wicket";
 import { action } from "../../../store";
 import { useDispatch, useSelector } from "react-redux";
 import { map } from "../../leafletMap/leafletMap";
 import img from "../../../img";
 
 import "./sideBarListCard.scss";
+
+const wkt = new Wkt.Wkt();
 
 const listClickHandler = (props, dispatch) => {
   map.setView(props.coords, 18);
@@ -20,7 +23,6 @@ const listClickHandler = (props, dispatch) => {
 
 const SideBarListCard = () => {
   const dispatch = useDispatch();
-  const selectRestaurant = useSelector((state) => state.selectRestaurant);
 
   const props = {
     RouteName: "「宜蘭縣礁溪鄉二龍競渡環線自行車道工程」",
@@ -41,8 +43,9 @@ const SideBarListCard = () => {
   return (
     <div
       className={`sideBarListCard`}
-      onClick={() => {
-        console.log(props.Geometry);
+      onClick={function () {
+        wkt.read(props.Geometry);
+        dispatch(action.selectRoadCreator(wkt.toJson(), props));
       }}
     >
       <div>
