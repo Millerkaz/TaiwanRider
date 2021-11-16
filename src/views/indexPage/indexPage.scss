@@ -1,6 +1,8 @@
 @import "../../sass/variable.scss";
 
 .index {
+  position: relative;
+  z-index: 2000;
   width: 100%;
   height: 100vh;
   transition: all 1.5s;

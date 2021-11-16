@@ -1,12 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
 import { reduxForm, Field } from "redux-form";
 import history from "../../helper/history";
+import { connect } from "react-redux";
 
 import { useDispatch, useSelector } from "react-redux";
 import { action } from "../../store";
-import { map, myselfPosition } from "../leafletMap/leafletMap";
-import { listenMyselfPosition } from "../leafletMap/leafletMap";
-
 import Input from "../form/input/input";
 import Select from "../form/select/select";
 import Btn from "../../components/btn";
@@ -20,6 +18,7 @@ const SearchBar = (props) => {
   const nearBikeData = useSelector((state) => state.nearBikeData);
   const dispatch = useDispatch();
   const mapCenter = useRef(1);
+  console.log(props);
 
   const formSubmitHandler = (valueObj) => {
     dispatch(action.clearNearDataCreator());
@@ -38,16 +37,16 @@ const SearchBar = (props) => {
           <Field
             name="city"
             component={Select}
-            className="select select__mainSearchBar"
+            className={`select ${props.selectClass || ""}`}
           />
           <Field
             name="term"
             component={Input}
-            className="input input__mainSearchBar"
+            className={`input ${props.inputClass || ""}`}
             placeholder="請輸入站點名稱"
           />
 
-          <Field component={Btn} type="submit" color="search">
+          <Field component={Btn} type="submit" color="">
             搜尋
             <img src={img.search} alt="search" />
           </Field>
@@ -67,8 +66,16 @@ const validate = (formValues) => {
   return error;
 };
 
-export default reduxForm({
+const mapStateToProps = (state) => {
+  return {
+    initialValues: { city: "Taichung" },
+  };
+};
+
+const comp = reduxForm({
   form: "searchBar",
-  initialValues: { city: "Taichung" },
+  enableReinitialize: true,
   validate: validate,
 })(SearchBar);
+
+export default connect(mapStateToProps)(comp);

@@ -6,6 +6,7 @@ const Select = (props) => {
   if (props.style === "custom") {
     return <select className={props.className || ""}>{props.children}</select>;
   }
+  console.log(props);
 
   return (
     <select className={props.className || ""} {...props.input}>

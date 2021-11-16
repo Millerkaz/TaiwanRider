@@ -30,10 +30,25 @@ const RestaurantBar = (props) => {
   const [closeClick, setCloseClick] = useState(false);
   const restaurant = useSelector((state) => state.nearRestaurantData);
 
+  if (props.style === "mobile") {
+    return (
+      <>
+        <div
+          className={`mobileToolBar__restaurantList ${
+            props.closeClick ? "restaurant--hidden " : ""
+          }`}
+        >
+          {!restaurant ? "" : renderRestaurantCard(restaurant)}
+        </div>
+      </>
+    );
+  }
+
   if (!restaurant)
     return (
       <>
         <BtnBar
+          closeClick={closeClick}
           className="mainPage__main--restaurant-icons "
           onCloseClick={() => setCloseClick((pre) => !pre)}
         />
@@ -43,13 +58,14 @@ const RestaurantBar = (props) => {
   return (
     <>
       <BtnBar
+        closeClick={closeClick}
         className="mainPage__main--restaurant-icons "
         onCloseClick={() => setCloseClick((pre) => !pre)}
       />
       <div className={props.className || null}>
         <div
           className={`mainPage__main--restaurant-list ${
-            closeClick ? "restaurant--hidden " : ""
+            closeClick ? "" : "restaurant--hidden "
           }`}
         >
           <Swiper

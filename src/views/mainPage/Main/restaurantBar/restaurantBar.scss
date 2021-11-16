@@ -13,6 +13,7 @@
   &--restaurant-icons {
     position: absolute;
     display: flex;
+    align-items: center;
     z-index: 10000;
     top: 18rem;
     right: 0%;
@@ -27,6 +28,7 @@
   }
 
   &--restaurant-list {
+    width: 23rem;
     transition: all 0.5s;
     height: 100rem;
     user-select: none;
@@ -41,5 +43,6 @@
 }
 
 .restaurant--hidden {
-  height: 0rem;
+  height: 0;
+  overflow: hidden;
 }

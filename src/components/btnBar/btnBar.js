@@ -7,6 +7,7 @@ import { action } from "../../store";
 import history from "../../helper/history";
 import "./btnBar.scss";
 import img from "../../img";
+import MobileToolBar from "../mobileToolBar/mobileToolBar";
 
 const BtnBar = (props) => {
   const dispatch = useDispatch();
@@ -17,9 +18,6 @@ const BtnBar = (props) => {
         onClick={() => {
           if (!myselfPosition) {
             listenMyselfPosition(dispatch);
-            // dispatch({
-            //   type: "FETCH_NO_BIKE_DATA",
-            //   payload: { mes: "no gps" },
             // });
             return;
           }
@@ -38,9 +36,19 @@ const BtnBar = (props) => {
       >
         <img src={img.i_person} />
       </Btn>
-      <Btn onClick={props.onCloseClick} color="location">
-        <img src={img.i_close} />
-      </Btn>
+      {props.className === "mobileToolBar__icons" ? (
+        ""
+      ) : (
+        <Btn
+          className={`mobileToolBar__close ${
+            props.closeClick ? "close--active" : ""
+          }`}
+          onClick={props.onCloseClick}
+          color="location"
+        >
+          {/* <img src={img.i_close} /> */}
+        </Btn>
+      )}
     </div>
   );
 };
