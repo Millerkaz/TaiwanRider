@@ -33,11 +33,7 @@ const RestaurantBar = (props) => {
   if (props.style === "mobile") {
     return (
       <>
-        <div
-          className={`mobileToolBar__restaurantList ${
-            props.closeClick ? "restaurant--hidden " : ""
-          }`}
-        >
+        <div className={`mobileToolBar__restaurantList`}>
           {!restaurant ? "" : renderRestaurantCard(restaurant)}
         </div>
       </>
