@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
-import SearchBar from "../searchBar/searchBar";
+import MobileSearch from "../mobileSearch/mobileSearch";
 import BtnBar from "../btnBar/btnBar";
 import Btn from "../btn";
 
@@ -30,7 +30,7 @@ const MobileToolBar = () => {
           onCloseClick={() => setCloseClick((pre) => !pre)}
         />
         <p>查詢YouBike站點</p>
-        <SearchBar />
+        <MobileSearch />
         <p>鄰近餐廳</p>
         <RestaurantBar closeClick={closeClick} style="mobile" />
       </div>

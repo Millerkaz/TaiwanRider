@@ -43,6 +43,7 @@ const Main = (props) => {
               <img src={img.logo_w} alt="logo" />
             </div>
             <SearchBar
+              name=""
               className="mainPage__main--searchBar"
               inputClass="input__mainSearchBar"
               selectClass="select__mainSearchBar"

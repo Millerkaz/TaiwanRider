@@ -1,0 +1,25 @@
+@import "../../sass/variable.scss";
+
+.searchBar {
+  &__container {
+    display: flex;
+  }
+
+  &__form {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @media only screen and (max-width: $rwd-medium) {
+      flex-wrap: wrap;
+    }
+
+    button {
+      @media only screen and (max-width: $rwd-medium) {
+        flex: 0 1 50%;
+        margin-top: 2rem;
+      }
+    }
+  }
+}

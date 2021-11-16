@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { action } from "../../store";
 import Input from "../form/input/input";
 import Select from "../form/select/select";
-import Btn from "../../components/btn";
+import Btn from "../btn";
 
 import img from "../../img";
 
