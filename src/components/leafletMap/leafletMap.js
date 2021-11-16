@@ -64,8 +64,14 @@ const mapBuild = (dispatch) => {
   map = window.L.map("map").setView([24, 121], 8);
 
   window.L.tileLayer("https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png", {
-    attribution:
-      '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    attribution: `
+    &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors
+    <footer style="text-align:center;">
+        Rider | 版權所有 © 2021
+        <br />- UX Designer : 阿珊 - <br />- Front-end Developer : Kaz
+        Miller -
+      </footer>
+    `,
   }).addTo(map);
 
   // window.L.tileLayer(
@@ -365,7 +371,15 @@ const LeafletMap = (props) => {
     map.flyToBounds(road.current.getBounds());
   }, [selectRoad]);
 
-  return <div id="map" class="map"></div>;
+  return (
+    <div id="map" class="map">
+      <footer>
+        台灣好好 版權所有© 2021
+        <br />- UX Designer : Wen Chien - <br />- Front-end Developer : Kaz
+        Miller -
+      </footer>
+    </div>
+  );
 };
 
 export default LeafletMap;
