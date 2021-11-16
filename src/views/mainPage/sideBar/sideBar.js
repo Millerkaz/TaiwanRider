@@ -32,7 +32,8 @@ const SideBar = (props) => {
     <React.Fragment>
       <div className="mainPage__sideBar-header">
         <form
-          onSubmit={() => {
+          onSubmit={(e) => {
+            e.preventDefault();
             dispatch(action.fetchRoadDataCreator(value, town));
           }}
         >
