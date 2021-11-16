@@ -11,6 +11,8 @@ const FETCH_NEAR_BIKE_DATA = "FETCH_NEAR_BIKE_DATA";
 const FETCH_NEAR_RESTAURANT_DATA = "FETCH_NEAR_RESTAURANT_DATA";
 const CLEAR_NEAR_DATA = "CLEAR_NEAR_DATA";
 
+const FETCH_ROAD_DATA = "FETCH_ROAD_DATA";
+
 const SELECT_RESTAURANT = "SELECT_RESTAURANT";
 const SELECT_ROAD = "SELECT_ROAD";
 
@@ -98,6 +100,21 @@ export const action = {
     };
   },
 
+  fetchRoadDataCreator: (city, town) => {
+    return async (dispatch) => {
+      const roadData = await PTX.get(
+        `/v2/Cycling/Shape/${city}?&${
+          town === "all" ? "" : `$filter=contains(Town,'${town}')`
+        }&$top=100&$format=JSON`
+      );
+
+      dispatch({
+        type: FETCH_ROAD_DATA,
+        payload: roadData.data,
+      });
+    };
+  },
+
   selectRestaurantCreator: (id) => {
     return { type: SELECT_RESTAURANT, payload: id };
   },
@@ -148,6 +165,13 @@ const fetchRestaurantDataReducer = (preState = null, action) => {
   return preState;
 };
 
+const fetchRoadDataReducer = (preState = [], action) => {
+  if (action.type === FETCH_ROAD_DATA) {
+    return [...action.payload];
+  }
+  return preState;
+};
+
 const isErrorShowReducer = (preState = false, action) => {
   if (action.type === FETCH_NO_BIKE_DATA) {
     return { showError: true, ...action.payload };
@@ -179,6 +203,7 @@ export const reducers = combineReducers({
   bikeData: oneBikeDataReducer,
   nearBikeData: nearBikeDataReducer,
   nearRestaurantData: fetchRestaurantDataReducer,
+  roadData: fetchRoadDataReducer,
   selectRestaurant: selectRestaurantReducer,
   selectRoad: selectRoadReducer,
   isErrorShow: isErrorShowReducer,

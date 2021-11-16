@@ -5,6 +5,7 @@ import history from "../../helper/history";
 import { useDispatch, useSelector } from "react-redux";
 import { action } from "../../store";
 import { map, myselfPosition } from "../leafletMap/leafletMap";
+import { listenMyselfPosition } from "../leafletMap/leafletMap";
 
 import Input from "../form/input/input";
 import Select from "../form/select/select";
@@ -21,6 +22,7 @@ const SearchBar = (props) => {
   const mapCenter = useRef(1);
 
   const formSubmitHandler = (valueObj) => {
+    dispatch(action.clearNearDataCreator());
     dispatch(action.fetchBikeDataCreator(valueObj));
   };
 
@@ -50,22 +52,6 @@ const SearchBar = (props) => {
             <img src={img.search} alt="search" />
           </Field>
         </form>
-        <Btn
-          color="location"
-          onClick={() => {
-            if (!myselfPosition) {
-              dispatch({
-                type: "FETCH_NO_BIKE_DATA",
-                payload: { mes: "no gps" },
-              });
-              return;
-            }
-            dispatch(action.fetchNearBikeDataCreator(myselfPosition));
-            map.setView(myselfPosition, 16);
-          }}
-        >
-          <img src={img.i_gps} alt="search" />
-        </Btn>
       </div>
     </div>
   );

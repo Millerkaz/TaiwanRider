@@ -30,7 +30,15 @@ const RestaurantBar = (props) => {
   const [closeClick, setCloseClick] = useState(false);
   const restaurant = useSelector((state) => state.nearRestaurantData);
 
-  if (!restaurant) return <></>;
+  if (!restaurant)
+    return (
+      <>
+        <BtnBar
+          className="mainPage__main--restaurant-icons "
+          onCloseClick={() => setCloseClick((pre) => !pre)}
+        />
+      </>
+    );
 
   return (
     <>

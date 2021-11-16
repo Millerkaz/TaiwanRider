@@ -3,8 +3,6 @@ import React, { useState } from "react";
 import "./select.scss";
 
 const Select = (props) => {
-  // const [value, setValue] = useState(props.default || null);
-
   if (props.style === "custom") {
     return <select className={props.className || ""}>{props.children}</select>;
   }

@@ -1,9 +1,11 @@
+@import "../../../../sass/variable.scss";
+
 .mainPage__main {
   &--restaurant {
     position: absolute;
     top: 25rem;
     right: 0%;
-    z-index: 10000;
+    z-index: 1000;
     transition: all 0.5s;
     overflow: hidden;
   }
@@ -14,12 +16,27 @@
     z-index: 10000;
     top: 18rem;
     right: 0%;
+
+    @media only screen and (max-width: $rwd-medium) {
+      top: 35rem;
+    }
+
+    @media only screen and (max-width: $rwd-smallest) {
+      top: 58rem;
+    }
   }
 
   &--restaurant-list {
     transition: all 0.5s;
     height: 100rem;
     user-select: none;
+    @media only screen and (max-width: $rwd-medium) {
+      transform: translateY(16%);
+    }
+
+    @media only screen and (max-width: $rwd-smallest) {
+      transform: translateY(40%);
+    }
   }
 }
 

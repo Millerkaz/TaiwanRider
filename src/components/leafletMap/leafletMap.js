@@ -13,7 +13,7 @@ export let map;
 export let myself = null;
 export let myselfPosition;
 
-const searchZoom = 8;
+const searchZoom = 10;
 const pinZoom = 17;
 
 let isFirstLocale = true;
@@ -61,7 +61,7 @@ export const listenMyselfPosition = (dispatch) => {
 };
 
 const mapBuild = (dispatch) => {
-  map = window.L.map("map").setView([24, 121], 5);
+  map = window.L.map("map").setView([24, 121], 8);
 
   window.L.tileLayer("https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png", {
     attribution:
@@ -77,7 +77,7 @@ const mapBuild = (dispatch) => {
   //   '<a href="https://www.jawg.io" target="_blank">&copy; Jawg</a> - <a href="https://www.openstreetmap.org" target="_blank">&copy; OpenStreetMap</a>&nbsp;contributors'
   // );
 
-  listenMyselfPosition(dispatch);
+  // listenMyselfPosition(dispatch);
 
   // const geoDenyHandler = () => {
   //   init = true;
@@ -189,13 +189,13 @@ const LeafletMap = (props) => {
       map.removeLayer(nearBikeMarksGroup.current);
     }
     if (!nearBikeData?.bikeData) {
-      console.log("附近1公里內無站點");
+      // console.log("附近1公里內無站點");
       return;
     }
     if (
       nearBikeData.bikeData.length !== nearBikeData.bikeAvailableData.length
     ) {
-      console.log("附近站點資料數量無法匹配");
+      // console.log("附近站點資料數量無法匹配");
       return;
     }
 
@@ -264,10 +264,11 @@ const LeafletMap = (props) => {
       })
         .bindPopup(renderRestaurantDetail(shop, dispatch))
         .on("click", (e) => {
+          // console.log(e);
           document
             .querySelectorAll(".pin--restaurant")
             .forEach((ele) => ele.classList.remove("icon--active"));
-          e.originalEvent.originalTarget.classList.add("icon--active");
+          e.originalEvent.target.classList.add("icon--active");
           dispatch(action.selectRestaurantCreator(shop.id));
           map.setView(e.latlng, pinZoom);
         });
@@ -282,7 +283,7 @@ const LeafletMap = (props) => {
       map.removeLayer(searchBikeMarksGroup.current);
     }
     if (!bikeData?.bikeData) {
-      console.log("所查資料不存在");
+      // console.log("所查資料不存在");
       return;
     }
     if (bikeData.bikeData.length !== bikeData.bikeAvailableData.length) {
@@ -340,8 +341,27 @@ const LeafletMap = (props) => {
       map.removeLayer(road.current);
     }
 
-    road.current = window.L.geoJson().addTo(map);
-    road.current.addData(selectRoad.Geometry);
+    // road.current = window.L.geoJson().addTo(map);
+    // road.current.addData(selectRoad.Geometry);
+    // map.flyToBounds(road.current.getBounds());
+
+    const options = {
+      // use: window.L.polyline,
+      delay: 800,
+      dashArray: [30, 40],
+      weight: 10,
+      color: "#009BB1",
+      // reverse: true,
+      pulseColor: "#FFFFFF",
+    };
+
+    let reverseCoords = selectRoad.Geometry.coordinates.map((poly) => {
+      return poly.map((point) => point.reverse());
+    });
+
+    road.current = window.L.polyline.antPath(reverseCoords, options);
+    console.log(road.current);
+    map.addLayer(road.current);
     map.flyToBounds(road.current.getBounds());
   }, [selectRoad]);
 

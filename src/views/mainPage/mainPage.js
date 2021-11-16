@@ -43,7 +43,7 @@ const MainPage = (props) => {
           <p>
             {isErrorShow.mes === "no data"
               ? "找無站點"
-              : "定位功能需要先開啟定位唷！"}
+              : "此功能請先開啟定位並重新整理唷！"}
           </p>
         </div>
       </div>

@@ -1,15 +1,6 @@
 @import "../../sass/variable.scss";
 
 .searchBar {
-  // @media only screen and (max-width: $rwd-medium) {
-  //   width: 80rem;
-  // }
-
-  // @media only screen and (max-width: $rwd-small) {
-  //   width: 50rem;
-  //   height: auto;
-  // }
-
   &__container {
     display: flex;
   }
@@ -20,18 +11,15 @@
     justify-content: center;
     align-items: center;
 
-    // @media only screen and (max-width: $rwd-small) {
-    //   padding: 3rem 5rem;
-    // }
+    @media only screen and (max-width: $rwd-medium) {
+      flex-wrap: wrap;
+    }
 
     button {
-      // margin-left: auto;
-      // margin-right: 1.7rem;
-
-      // @media only screen and (max-width: $rwd-small) {
-      //   margin: 0;
-      //   margin-bottom: 1rem;
-      // }
+      @media only screen and (max-width: $rwd-medium) {
+        flex: 0 1 50%;
+        margin-top: 2rem;
+      }
     }
   }
 }
