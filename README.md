@@ -3,6 +3,8 @@
  ### `作品連結：`
  [Taiwan Rider](https://taiwanrider.netlify.app/#/)
  
+ ![demo](./demo.png)
+ 
  ### `作者：`
  UI設計師：[阿珊](https://www.figma.com/file/ApyxH6B7FcG5milnkK6PL7/week2)\
  前端工程師：Kaz Miller\
