@@ -98,7 +98,9 @@ const mapBuild = (dispatch) => {
 const renderStationDetail = (station) => {
   return `
   <div class="detailCard">
-    <h3 class="detailCard__title">${station.name.tw[1]}</h3>
+    <h3 class="detailCard__title">${
+      station.name.tw[1] || station.name.tw[0]
+    }</h3>
     <span class="detailCard__address">${station.address.Zh_tw}</span>
     <span class="detailCard__type">${station.name.tw[0]}</span>
     <div class="detailCard__bike">      
@@ -107,7 +109,9 @@ const renderStationDetail = (station) => {
       <span>可借</span>      
       <span>可還</span>      
     </div>
-    <button class="btn btn--detailCard" data-lat=${station.coords.lat} data-lng=${station.coords.lng}>搜尋附近美食</button>
+    <button class="btn btn--detailCard" data-lat=${
+      station.coords.lat
+    } data-lng=${station.coords.lng}>搜尋附近美食</button>
   </div>
   `;
 };
