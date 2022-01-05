@@ -18,7 +18,7 @@ const MobileSearchBar = (props) => {
   const nearBikeData = useSelector((state) => state.nearBikeData);
   const dispatch = useDispatch();
   const mapCenter = useRef(1);
-  console.log(props);
+  // console.log(props);
 
   const formSubmitHandler = (valueObj) => {
     dispatch(action.clearNearDataCreator());

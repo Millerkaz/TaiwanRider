@@ -11,9 +11,9 @@ const renderRestaurantCard = (data) => {
   return data.map((shop) => (
     <SwiperSlide>
       <ListSmallCard
-        key={shop.ID}
-        title={shop.Name}
-        id={shop.ID}
+        key={shop.RestaurantID}
+        title={shop.RestaurantName}
+        id={shop.RestaurantID}
         phone={shop.Phone.split(",")[0]}
         open={shop.OpenTime}
         address={shop.Address}

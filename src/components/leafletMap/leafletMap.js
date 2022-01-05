@@ -186,7 +186,7 @@ const LeafletMap = (props) => {
       .addEventListener("click", detailCardClickHandler);
 
     return () => {
-      console.log("remove");
+      // console.log("remove");
       document
         .querySelector(".map")
         .removeEventListener("click", detailCardClickHandler);
@@ -250,8 +250,8 @@ const LeafletMap = (props) => {
     }
     const restaurantMarksArray = nearRestaurantData.map((shop) => {
       return {
-        title: shop.Name,
-        id: shop.ID,
+        title: shop.RestaurantName,
+        id: shop.RestaurantID,
         url: shop.Picture.PictureUrl1,
         alt: shop.Picture.PictureDescription1,
         address: shop.Address,
@@ -296,7 +296,7 @@ const LeafletMap = (props) => {
       return;
     }
     if (bikeData.bikeData.length !== bikeData.bikeAvailableData.length) {
-      console.log("搜尋結果資料數量無法匹配");
+      // console.log("搜尋結果資料數量無法匹配");
       return;
     }
 
@@ -369,7 +369,7 @@ const LeafletMap = (props) => {
     });
 
     road.current = window.L.polyline.antPath(reverseCoords, options);
-    console.log(road.current);
+    // console.log(road.current);
     map.addLayer(road.current);
     map.flyToBounds(road.current.getBounds());
   }, [selectRoad]);

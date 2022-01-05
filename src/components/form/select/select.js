@@ -6,12 +6,12 @@ const Select = (props) => {
   if (props.style === "custom") {
     return <select className={props.className || ""}>{props.children}</select>;
   }
-  console.log(props);
+  // console.log(props);
 
   return (
     <select className={props.className || ""} {...props.input}>
       <option value="Taichung">臺中市</option>
-      <option value="HsinchuCounty">新竹縣</option>
+      <option value="Hsinchu">新竹縣</option>
       <option value="MiaoliCounty">苗栗縣</option>
       <option value="NewTaipei">新北市</option>
       <option value="PingtungCounty">屏東縣</option>
@@ -20,7 +20,7 @@ const Select = (props) => {
       <option value="Taipei">臺北市</option>
       <option value="Kaohsiung">高雄市</option>
       <option value="Tainan">臺南市</option>
-      <option value="ChiayiCounty">嘉義市</option>
+      <option value="Chiayi">嘉義市</option>
     </select>
   );
 };
